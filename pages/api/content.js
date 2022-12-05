@@ -2,9 +2,9 @@ const fs = require('fs')
 
 export default function handler(req, res) {
     if(req.method === 'GET'){
-        fs.readdir('/tmp', {encoding: 'utf-8'}, (err, files) => {
-            console.log('Files are, ', files)
-        })
+        // fs.readdir('/tmp', {encoding: 'utf-8'}, (err, files) => {
+        //     files.forEach(f => console.log(f))
+        // })
         fs.readFile('/tmp/msg.txt', {encoding: 'utf-8'}, (err, data) => {
             if(err){
                 res.status(500).json({err: err.message || 'Something went wrong!'})
