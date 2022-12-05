@@ -1,9 +1,22 @@
 import Script from 'next/script'
 
-export default function Welcome() {  
-    return <>
-    <h1>Welcome to here</h1>
-    <Script src='static/del.js'></Script>
+export default function Welcome(props) {  
+    return <> 
+    <Script src='static/utils.js'></Script>
     
     </>
 }
+
+
+export async function getServerSideProps(context) {
+    const htmls = ['./static/tmp/cover.xhtml', './static/tmp/page002.xhtml']
+    return {
+      props: {
+        files: {
+            html: htmls,
+            css: './static/z4/iframe.css'
+
+        }
+      }, // will be passed to the page component as props
+    }
+  }

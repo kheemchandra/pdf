@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 const fs = require('fs')
-const { pdf2html } = require('../../core/pdf1');
+const { pdf2html } = require('../../core/pdf2html');
 
 import middleware from '../../middleware/middleware';
 import { createRouter} from 'next-connect';
@@ -8,8 +8,10 @@ import nextConnect from 'next-connect';
 
 
 
+
+
 const inputFile = 'F:\\Extensions\\Nextjs\\test.pdf';
-const outputPath = 'F:\\Extensions\\Nextjs\\z4';
+const outputPath = './public/static/tmp';
 
 
 const handler = nextConnect()

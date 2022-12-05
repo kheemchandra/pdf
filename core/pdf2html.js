@@ -13,6 +13,7 @@ exports.pdf2html = (inputFile, outputPath) => {
 			console.log('Converting PDF to HTML with fixed positioning option turned on (default)');
 
 			// Convert PDF to HTML
+			
 			await PDFNet.Convert.fileToHtml(inputFile, outputPath);
 
 			console.log('Result saved in ' + outputPath);
