@@ -25,7 +25,7 @@ handler.post(async (req, res) => {
 
   try {
     await pdf2html(path, outputPath)
-    res.status(200).json({message: 'Success!'})
+    res.status(200).json({message: 'Success!', path: path})
   } catch (error) {
     res.json(500).json({message: 'Something went wrong!'})
   }
