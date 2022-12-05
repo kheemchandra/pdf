@@ -3,7 +3,7 @@ const fs = require('fs')
 export default function handler(req, res){
     if(req.method === 'GET'){
         console.log('Hooray! yay')
-        fs.writeFile('public/static/msg.txt', 'Kheem da ', err => {
+        fs.writeFile('/tmp/msg.txt', 'Kheem da kaise ho', err => {
             if(err){
                 throw err 
             }
