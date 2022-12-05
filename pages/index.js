@@ -30,7 +30,7 @@ export default function HomePage() {
   }
 
   return <div>
-    <Image style={{border: '1px solid red', borderRadius: '10px'}} src='/static/dog.png' width={250} height={150}/>
+    <Image style={{border: '2px solid blue', borderRadius: '10px'}} src='/static/dog.png' width={250} height={150}/>
     <form onSubmit={submitHandler}>
       <div>
         <label htmlFor="pdf">Select a pdf</label>
