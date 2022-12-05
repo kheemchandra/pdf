@@ -11,7 +11,7 @@ import nextConnect from 'next-connect';
 
 
 const inputFile = 'F:\\Extensions\\Nextjs\\test.pdf';
-const outputPath = './public/static/tmp';
+const outputPath = '/tmp';
 
 
 const handler = nextConnect()

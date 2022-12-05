@@ -9,7 +9,7 @@ export default function Welcome(props) {
 
 
 export async function getServerSideProps(context) {
-    const htmls = ['./static/tmp/cover.xhtml', './static/tmp/page002.xhtml']
+    const htmls = ['tmp/cover.xhtml', 'tmp/page002.xhtml']
     return {
       props: {
         files: {
