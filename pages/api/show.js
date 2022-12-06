@@ -19,12 +19,15 @@ export default function handler(req, res) {
     if(req.method === 'GET'){
         
         fs.readdir('/', {encoding: 'utf-8'}, (err, files) => {
+            if(err){
+                res.status(500).json({err: 'Something went wrong!'|| err.message})
+            }
             files.forEach(f => {
                 if(f === 'tmp'){
                     res.status(200).json({onm: files})
                     fs.readdir(path.join('/', f), {encoding: 'utf-8'}, (err, files1) => {
                         if(err){
-                            res.status(500).json({error: err.message})
+                            res.status(500).json({err: 'Something went wrong!'|| err.message})
                         }
                         console.log(files1)
                         res.status(200).json({data: files1})
