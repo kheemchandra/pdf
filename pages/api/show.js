@@ -21,6 +21,7 @@ export default function handler(req, res) {
         fs.readdir('/', {encoding: 'utf-8'}, (err, files) => {
             files.forEach(f => {
                 if(f === 'tmp'){
+                    res.status(200).json({onm: files})
                     fs.readdir(path.join('/', f), {encoding: 'utf-8'}, (err, files1) => {
                         if(err){
                             res.status(500).json({error: err.message})
