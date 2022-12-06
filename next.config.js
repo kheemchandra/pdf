@@ -9,12 +9,12 @@ const nextConfig = {
         destination: '/static/no.html'
       },
       {
-        source: '/pdf/cover.xhtml',
+        source: 'https://pdf-production.up.railway.app/pdf/cover.xhtml',
         destination: '/pdf/cover.xhtml'
       },
       {
-        source:  '/pdf/page001.xhtml',
-        destination: '/pdf/page001.xhtml',
+        source:  'https://pdf-production.up.railway.app/pdf/page002.xhtml',
+        destination: '/pdf/page002.xhtml',
       }
     ]
   }
