@@ -10,7 +10,8 @@ export default function Welcome(props) {
 
 // import {} from '../../public/pdf/'
 export async function getServerSideProps(context) {
-    const p = './pdf/'
+    let p = path.join(process.cwd(), 'public', 'pdf')
+    p = '/pdf/'
     const htmls = [`${p}/cover.xhtml`, `${p}/page002.xhtml`]
     return {
       props: {
