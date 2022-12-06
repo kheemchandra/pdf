@@ -16,15 +16,15 @@ let fragment = new DocumentFragment();
   fr.loading="lazy"
 
 
-  const cssLink = document.createElement("link");
-  cssLink.href = '/static/iframe.css';
+  // const cssLink = document.createElement("link");
+  // cssLink.href = '/static/iframe.css';
   
-  cssLink.rel = "stylesheet";
-  cssLink.type = "text/css";
+  // cssLink.rel = "stylesheet";
+  // cssLink.type = "text/css";
   
    
   fr.addEventListener('load', (e) => {
-    e.target.contentDocument.head.appendChild(cssLink)
+    // e.target.contentDocument.head.appendChild(cssLink)
     e.target.style.height=(e.target.contentWindow.document.body.scrollHeight)+'px' 
   })  
 
