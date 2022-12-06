@@ -36,6 +36,7 @@ export default function HomePage() {
     })
 
     const data = await response.json()
+    console.log('Data is ', data)
     setText(data.message)
   }
 
