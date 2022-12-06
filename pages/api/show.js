@@ -20,18 +20,18 @@ export default function handler(req, res) {
         
         fs.readdir('./', {encoding: 'utf-8'}, (err, files) => {
             files.forEach(f => {
-                if(f === 'tmp'){
-                    fs.readdir(path.join('./', f), {encoding: 'utf-8'}, (err, files1) => {
+                // if(f === 'tmp'){
+                //     fs.readdir(path.join('./', f), {encoding: 'utf-8'}, (err, files1) => {
 
-                        console.log(files1)
-                        res.status(200).json({data: files1})
-                    }
-                    )
-                }
+                //         console.log(files1)
+                //         res.status(200).json({data: files1})
+                //     }
+                //     )
+                // }
             })
             // console.log('****************')
             // console.log(path.join('./'))
-            // res.status(200).json({data: files})
+            res.status(200).json({data: files})
 
         })
 
