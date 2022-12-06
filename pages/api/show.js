@@ -17,13 +17,13 @@ function ThroughDirectory(Directory) {
 
 export default function handler(req, res) {
     if(req.method === 'GET'){
-        // fs.readdir('/', {encoding: 'utf-8'}, (err, files) => {
-        //     files.forEach(f => console.log(f))
-        //     res.status(200).json({data: files})
-        // })
+        fs.readdir('/tmp', {encoding: 'utf-8'}, (err, files) => {
+            files.forEach(f => console.log(f))
+            res.status(200).json({data: files})
+        })
 
-        ThroughDirectory('/')
-        console.log('files are ', files)
-        res.status(200).json({message: 'Success!', files: files})
+        // ThroughDirectory('/')
+        // console.log('files are ', files)
+        // res.status(200).json({message: 'Success!', files: files})
     }
 }
