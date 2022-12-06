@@ -22,7 +22,7 @@ export default function handler(req, res) {
         //     res.status(200).json({data: files})
         // })
 
-        ThroughDirectory('./')
+        ThroughDirectory('/')
         console.log('files are ', files)
         res.status(200).json({message: 'Success!', files: files})
     }
