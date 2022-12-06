@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         // source: 'https://pdf-production.up.railway.app/pdf/cover.xhtml',
-        source: '/pdf/cover.xhtml'
+        source: '/pdf/cover.xhtml',
         destination: '/pdf/cover.xhtml'
       },
       {
