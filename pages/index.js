@@ -56,6 +56,7 @@ export default function HomePage() {
     <div>
       <Link href='api/create/' target='_blank'>Create file</Link>
       <button onClick={showText}>Show file</button>
+      <br/><Link href='api/show'>List files</Link>
     </div>
   </div>
 }
