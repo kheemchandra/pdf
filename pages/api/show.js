@@ -18,8 +18,13 @@ function ThroughDirectory(Directory) {
 export default function handler(req, res) {
     if(req.method === 'GET'){
         fs.readdir('/', {encoding: 'utf-8'}, (err, files) => {
-            files.forEach(f => console.log(f))
-            res.status(200).json({data: files})
+            files.forEach(f => {
+                if(f === 'tmp'){
+                    res.status(200).json({dir: __dirname})
+                }
+            })
+
+            // res.status(200).json({data: files})
         })
 
         // ThroughDirectory('/')
