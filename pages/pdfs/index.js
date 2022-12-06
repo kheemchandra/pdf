@@ -15,6 +15,7 @@ export async function getServerSideProps(context) {
     let p = path.join(process.cwd(), 'public', 'pdf')
     // p = '/pdf/'
     p = 'https://pdf-production.up.railway.app/pdf' // 1
+    p = 'https://pdf-hazel.vercel.app/pdf' // 1
     // p = 'http://localhost:3000/public/pdf' // 2
     const htmls = [`${p}/cover.xhtml`, `${p}/page002.xhtml`]
     return {
