@@ -9,11 +9,13 @@ const nextConfig = {
         destination: '/static/no.html'
       },
       {
-        source: 'https://pdf-production.up.railway.app/pdf/cover.xhtml',
+        // source: 'https://pdf-production.up.railway.app/pdf/cover.xhtml',
+        source: '/pdf/cover.xhtml'
         destination: '/pdf/cover.xhtml'
       },
       {
-        source:  'https://pdf-production.up.railway.app/pdf/page002.xhtml',
+        // source:  'https://pdf-production.up.railway.app/pdf/page002.xhtml',
+        source: '/pdf/page002.xhtml',
         destination: '/pdf/page002.xhtml',
       }
     ]
