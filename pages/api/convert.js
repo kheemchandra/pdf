@@ -11,7 +11,8 @@ import nextConnect from 'next-connect';
 
 
 const inputFile = 'F:\\Extensions\\Nextjs\\test.pdf';
-const outputPath = path.join(process.cwd(), 'public', 'pdf');
+let outputPath = path.join(process.cwd(), 'public', 'pdf');
+outputPath = path.join(process.cwd());
 // const outputPath = './public/static/'
 
 

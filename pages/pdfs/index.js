@@ -16,6 +16,7 @@ export async function getServerSideProps(context) {
     // p = '/pdf/'
     p = 'https://pdf-hazel.vercel.app/pdf' // 1
     p = 'https://pdf-production.up.railway.app/pdf' // 1
+    p = ''
     // p = 'http://localhost:3000/public/pdf' // 2
     const htmls = [`${p}/cover.xhtml`, `${p}/page002.xhtml`]
     return {
