@@ -5,8 +5,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/check',
-        destination: '/static/index.html'
+        source: '/pdf1/msg.html',
+        destination: '/static/no.html'
       }
     ]
   }
