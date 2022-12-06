@@ -52,6 +52,7 @@ export default function HomePage() {
     <div>{text}</div>
     <br/>
     <Link href="/pdfs" disabled={available} target="_blank">View pdf</Link>
+    <br/><Link href="/pdfs1" disabled={available} target="_blank">View pdf1</Link>
 
     <div>
       <Link href='api/create/' target='_blank'>Create file</Link>
