@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-const fs = require('fs')
+import path from 'path'
 const { pdf2html } = require('../../core/pdf2html');
 
 import middleware from '../../middleware/middleware';
@@ -11,7 +11,8 @@ import nextConnect from 'next-connect';
 
 
 const inputFile = 'F:\\Extensions\\Nextjs\\test.pdf';
-const outputPath = '/tmp';
+const outputPath = path.join(process.cwd(), 'public', 'pdf');
+// const outputPath = './public/static/'
 
 
 const handler = nextConnect()

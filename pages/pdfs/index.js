@@ -1,3 +1,4 @@
+import path from 'path'
 import Script from 'next/script'
 
 export default function Welcome(props) {  
@@ -8,8 +9,9 @@ export default function Welcome(props) {
 }
 
 
-export async function getServerSideProps(context) {
-    const htmls = ['/tmp/cover.xhtml', '/tmp/page002.xhtml']
+export async function getStaticProps(context) {
+    const p = path.join(process.cwd(), 'public', 'pdf')
+    const htmls = [`${p}/cover.xhtml`, `${p}/page002.xhtml`]
     return {
       props: {
         files: {
