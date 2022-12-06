@@ -22,22 +22,22 @@ export default function handler(req, res) {
             if(err){
                 res.status(500).json({err: 'Something went wrong!'|| err.message})
             }
-            files.forEach(f => {
-                if(f === 'tmp'){
-                    res.status(200).json({onm: files})
-                    fs.readdir(path.join('/', f), {encoding: 'utf-8'}, (err, files1) => {
-                        if(err){
-                            res.status(500).json({err: 'Something went wrong!'|| err.message})
-                        }
-                        console.log(files1)
-                        res.status(200).json({data: files1})
-                    }
-                    )
-                }
-            })
+            // files.forEach(f => {
+            //     if(f === 'tmp'){
+            //         res.status(200).json({onm: files})
+            //         fs.readdir(path.join('/', f), {encoding: 'utf-8'}, (err, files1) => {
+            //             if(err){
+            //                 res.status(500).json({err: 'Something went wrong!'|| err.message})
+            //             }
+            //             console.log(files1)
+            //             res.status(200).json({data: files1})
+            //         }
+            //         )
+            //     }
+            // })
             // console.log('****************')
             // console.log(path.join('./'))
-            // res.status(200).json({data: files})
+            res.status(200).json({data: files})
 
         })
 
