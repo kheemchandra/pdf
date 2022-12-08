@@ -20,11 +20,15 @@ handler.use(middleware)
 handler.post(async (req, res) => { 
   const path = req.files.file[0].path 
 
-  const exist = await isDirExist(outputPath)
+  // const exist = await isDirExist(outputPath)
 
-  if(exist){
-    fs.rmdirSync(outputPath)
-  }
+  // if(exist){
+    try{fs.rmSync(outputPath, {recursive: true, force: true})}
+    catch(e){
+      console.log('Error is ', e)
+      throw e
+    }
+  // }
 
   try {
     await pdf2html(path, outputPath)
