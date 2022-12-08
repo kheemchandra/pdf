@@ -1,10 +1,14 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import path from 'path'
-const { pdf2html } = require('../../core/pdf2html');
-
-import middleware from '../../middleware/middleware';
+import fs from 'fs';
+import path from 'path';
 import { createRouter} from 'next-connect';
 import nextConnect from 'next-connect';   
+
+import middleware from '../../middleware/middleware';
+const { pdf2html } = require('../../core/pdf2html');
+
+
+const isDirExist = async path => await fs.promises.access(path).then(()=>true).catch(()=>false);
 
 
 const outputPath = path.join(process.cwd(), 'public', 'pdf');
@@ -15,6 +19,12 @@ handler.use(middleware)
 
 handler.post(async (req, res) => { 
   const path = req.files.file[0].path 
+
+  const exist = await isDirExist(outputPath)
+
+  if(exist){
+    fs.rmdirSync(outputPath)
+  }
 
   try {
     await pdf2html(path, outputPath)
