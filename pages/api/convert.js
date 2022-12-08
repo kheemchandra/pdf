@@ -4,26 +4,17 @@ const { pdf2html } = require('../../core/pdf2html');
 
 import middleware from '../../middleware/middleware';
 import { createRouter} from 'next-connect';
-import nextConnect from 'next-connect';
+import nextConnect from 'next-connect';   
 
 
-
-
-
-const inputFile = 'F:\\Extensions\\Nextjs\\test.pdf';
-let outputPath = path.join(process.cwd());
-outputPath = path.join(process.cwd(), 'public', 'pdf');
-// const outputPath = './public/static/'
+const outputPath = path.join(process.cwd(), 'public', 'pdf');
 
 
 const handler = nextConnect()
 handler.use(middleware)
 
-handler.post(async (req, res) => {
-  console.log(req.body)
-  console.log(req.files)
-  const path = req.files.file[0].path
-  console.log('Path is ', path)
+handler.post(async (req, res) => { 
+  const path = req.files.file[0].path 
 
   try {
     await pdf2html(path, outputPath)
@@ -31,8 +22,7 @@ handler.post(async (req, res) => {
   } catch (error) {
     res.json(500).json({message: 'Something went wrong!'})
   }
-
-  //...
+ 
 })
 
 export const config = {

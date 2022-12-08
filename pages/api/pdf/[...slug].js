@@ -1,9 +1,8 @@
 import path from 'path'
 import fs from 'fs'
 
-export default function handler(req, res) {
-    // application/xhtml+xml
-    console.log('Req is ', req.url)
+export default function handler(req, res) { 
+    
     let mimeType
     let  pth = req.url.replace('/api', 'public')
     let p = path.join(process.cwd(), pth)
@@ -22,14 +21,13 @@ export default function handler(req, res) {
         default:
             break;
     }
-    // p = path.join(process.cwd(), 'public/pdf/t.xhtml')
-    // fs.writeFileSync(p, '<p>This is working</p>')
+    
     fs.readFile(p, (err, data) => {
     if(err){
         return res.status(500).json({error: err.message})
     }
     if(mimeType)res.setHeader("Content-Type", mimeType);
-    // console.log('Data is ', data.toString())
-    return res.send(data);
+    
+    return res.status(200).send(data)
   })
 }

@@ -1,27 +1,47 @@
+import fs from 'fs'
 import path from 'path'
 import Script from 'next/script'
-import * as React from 'react'
 
- 
-export default function Welcome(props) {  
+
+export default function Welcome({files}) {
+  const {html} = files 
+  if(html.length === 0){
+    return <h2 style={{textAlign: 'center', marginTop: '35%'}}>Please upload a pdf!!</h2>
+  } 
     return <> 
-    <Script src='static/utils.js'></Script>
-    
+      <Script src='static/utils.js'></Script>    
     </>
 }
 
-// import {} from '../../public/pdf/'
-export async function getServerSideProps() {
-  let p = '/api/pdf';
-    // p = 'http://localhost:3000/public/pdf' // 2
-    const htmls = [`${p}/cover.xhtml`, `${p}/page002.xhtml`]
-    return {
-      props: {
-        files: {
-            html: htmls,
-            // css: './static/z4/iframe.css'
 
-        }
-      } 
+export async function getServerSideProps({req, res}) { 
+  const pre = '/api/pdf';
+  
+  const xhtmlFiles = []
+  
+
+  try{
+    const data = fs.readdirSync(path.join(process.cwd(), 'public/pdf'), {encoding: 'utf-8'})
+
+    data.forEach(f => {
+      if(f.includes('.xhtml')){
+        xhtmlFiles.push(`${pre}/${f}`)
+      }
+    }) 
+  }catch(e){
+    
+  }
+  finally{
+      return { 
+        props: {
+          files: {
+            html: xhtmlFiles
+          }
+        } 
     }
   }
+
+  
+  
+
+}

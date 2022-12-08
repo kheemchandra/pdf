@@ -5,8 +5,7 @@ import Image from 'next/image'
 
 
 export default function HomePage() {
-  const [file, setFile] = useState() 
-  const [text, setText] = useState() 
+  const [file, setFile] = useState()  
 
   const [available, setAvailable] = useState(false)
 
@@ -26,8 +25,8 @@ export default function HomePage() {
         "Content-Type": "multipart/form-data"
       }
     })  
-    console.log('Response is ', response)
     setAvailable(true)
+    console.log('Success!')
   }
 
   async function showText() {
@@ -39,6 +38,7 @@ export default function HomePage() {
     console.log('Data is ', data)
     setText(data.message)
   }
+  let a = true;
 
   return <div>
     <Image style={{border: '1px solid red', borderRadius: '10px'}} src='/static/dog.png' width={250} height={150} alt='Good Doggy'/>
@@ -48,17 +48,12 @@ export default function HomePage() {
         <input id="pdf" type="file" onChange={uploadHandler} required/>
       </div>
       <button type='submit'>Convert</button>
-    </form>
-    <div>{text}</div>
-    <br/>
-    <Link href="/pdfs" disabled={available} target="_blank">View pdf</Link>
-    <br/><Link href="/pdfs1" disabled={available} target="_blank">View pdf1</Link>
-
-    <div>
-      <Link href='api/create/' target='_blank'>Create file</Link>
-      <button onClick={showText}>Show text</button>
-      <br/><Link href='api/show' target='_blank'>Show files</Link>
-    </div>
+    </form> 
+    <br/>  
+    <Link className='pdf' href="/pdfs" target="_blank">
+      View pdf
+    </Link> 
+     
   </div>
 }
  
