@@ -1,0 +1,17 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+ @import url(https://fonts.googleapis.com/css?family=Roboto:100,300);
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to top, #4F6072, #8699AA);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

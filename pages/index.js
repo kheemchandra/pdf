@@ -2,7 +2,10 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import Link from 'next/link'
 import Image from 'next/image'
+import Script from 'next/script'
 
+// import styles from '../styles/upload.module.css'
+import styles from '../styles/upload.module.scss'
 
 export default function HomePage() {
   const [file, setFile] = useState()  
@@ -40,6 +43,36 @@ export default function HomePage() {
   }
   let a = true;
 
+  return <>
+  <div className={styles["upload"]}>
+        <div className={styles["upload-files"]}>
+         <header className={styles["header"]}>
+          <p>
+          <i className="fa fa-cloud-upload" aria-hidden="true"></i>           
+           <span className={styles["up"]}>up</span>
+           <span className={styles["load"]}>load</span>
+          </p>
+         </header> 
+         <div className="body" id="drop">
+          <i className="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
+          <p className="pointer-none"><b>Drag and drop</b> files here <br /> or <a href="" id="triggerFile">browse</a> to begin the upload</p>
+                   <input type="file" />
+         </div>
+         <footer className={styles["footer"]}>
+          <div className={styles["divider"]}>
+          <span><>FILES</></span>
+
+          </div>
+          <div className={styles["list-files"]}>
+            
+          </div>
+                   <button className={styles["importar"]}>UPDATE FILES</button>
+         </footer>
+        </div>
+       </div>
+       <Script src="/static/upload.js"></Script>
+  </>
+
   return <div>
     <Image style={{border: '1px solid red', borderRadius: '10px'}} src='/static/dog.png' width={250} height={150} alt='Good Doggy'/>
     <form onSubmit={submitHandler}>
@@ -50,7 +83,7 @@ export default function HomePage() {
       <button type='submit'>Convert</button>
     </form> 
     <br/>  
-    <Link className='pdf' href="/pdfs" target="_blank">
+    <Link className={styles['pdf']} href="/pdfs" target="_blank">
       View pdf
     </Link> 
      
