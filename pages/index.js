@@ -4,8 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Script from 'next/script'
 
-// import styles from '../styles/upload.module.css'
-import styles from '../styles/upload.module.scss'
+
 
 export default function HomePage() {
   const [file, setFile] = useState()  
@@ -44,33 +43,33 @@ export default function HomePage() {
   let a = true;
 
   return <>
-  <div className={styles["upload"]}>
-        <div className={styles["upload-files"]}>
-         <header className={styles["header"]}>
-          <p>
-          <i className="fa fa-cloud-upload" aria-hidden="true"></i>           
-           <span className={styles["up"]}>up</span>
-           <span className={styles["load"]}>load</span>
-          </p>
-         </header> 
-         <div className="body" id="drop">
-          <i className="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
-          <p className="pointer-none"><b>Drag and drop</b> files here <br /> or <a href="" id="triggerFile">browse</a> to begin the upload</p>
-                   <input type="file" />
-         </div>
-         <footer className={styles["footer"]}>
-          <div className={styles["divider"]}>
-          <span><>FILES</></span>
+  
+  <div className="upload">
+ <div className="upload-files">
+  <header>
+   <p>
+    <i className="fa fa-cloud-upload" aria-hidden="true"></i>
+    <span className="up">up</span>
+    <span className="load">load</span>
+   </p>
+  </header>
+  <div className="body" id="drop">
+   <i className="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
+   <p className="pointer-none"><b>Drag and drop</b> files here <br /> or <a href="" id="triggerFile">browse</a> to begin the upload</p>
+			<input type="file" multiple="multiple" />
+  </div>
+  <footer>
+   <div className="divider">
+    <span><>FILES</></span> 
+   </div>
+   <div className="list-files"> 
+   </div>
+			<button className="importar">UPDATE FILES</button>
+  </footer>
+ </div>
+</div>
+<Script src='/static/upload.js'></Script>
 
-          </div>
-          <div className={styles["list-files"]}>
-            
-          </div>
-                   <button className={styles["importar"]}>UPDATE FILES</button>
-         </footer>
-        </div>
-       </div>
-       <Script src="/static/upload.js"></Script>
   </>
 
   return <div>
@@ -83,7 +82,7 @@ export default function HomePage() {
       <button type='submit'>Convert</button>
     </form> 
     <br/>  
-    <Link className={styles['pdf']} href="/pdfs" target="_blank">
+    <Link classNameName={styles['pdf']} href="/pdfs" target="_blank">
       View pdf
     </Link> 
      

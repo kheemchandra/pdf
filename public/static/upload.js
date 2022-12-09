@@ -61,15 +61,15 @@ App.init = (function() {
 		evt.preventDefault();
 	};
 
-	//upload more
-	// $(".importar").addEventListener("click", () => {
-	// 	$(".list-files").innerHTML = "";
-	// 	$("footer").classList.remove("hasFiles");
-	// 	$(".importar").classList.remove("active");
-	// 	setTimeout(() => {
-	// 		$("#drop").classList.remove("hidden");
-	// 	}, 500);
-	// });
+	// upload more
+	$(".importar").addEventListener("click", () => {
+		$(".list-files").innerHTML = "";
+		$("footer").classList.remove("hasFiles");
+		$(".importar").classList.remove("active");
+		setTimeout(() => {
+			$("#drop").classList.remove("hidden");
+		}, 500);
+	});
 
 	// input change
 	$("input[type=file]").addEventListener("change", handleFileSelect);
