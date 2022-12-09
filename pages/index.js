@@ -8,7 +8,7 @@ import Script from 'next/script'
 
 export default function HomePage() {
   const [file, setFile] = useState()  
-  const [available, setAvailable] = useState(false)
+  
   function uploadHandler(e) {
     setFile(e.target.files[0])
   }
@@ -39,7 +39,8 @@ export default function HomePage() {
 
   // ==================START FUNCTION=========
   const [template, setTemplate] = useState()
-  
+  const [available, setAvailable] = useState(false)
+
   const inputRef = useRef()
   const dropRef = useRef()
   const footerRef = useRef()
@@ -55,7 +56,7 @@ export default function HomePage() {
      <div className={`progress ${!available ? 'active': ''}`}></div>
      <div className={`done ${available ? 'anim': ''}`}>
 	<a href="" target="_blank">
-      <img src="/icons/tick.svg"/>
+      <Image src="/icons/tick.svg" width={20} height={20} alt='tick'/>
 						</a>
      </div>
     </div> )
@@ -64,15 +65,17 @@ export default function HomePage() {
 		dropRef.current.classList.add("hidden");
 		footerRef.current.classList.add("hasFiles");
 		importarRef.current.classList.add("active");
-		setTimeout(() => {
+		// setTimeout(() => {
 			// $(".list-files").innerHTML = template;
       setTemplate(temp)
-		}, 1000);
+		// }, 1000);
 
+    setAvailable(true)
     setTimeout(() => {
 			// $(".list-files").innerHTML = template;
       setAvailable(true)
-		}, 2000);
+      console.log('Are you alive?')
+		}, 3000);
 
 		Object.keys(files).forEach(file => {
       /*** NOT SOLVED YET!! */
@@ -110,7 +113,7 @@ export default function HomePage() {
   }
 
   function uploadMoreHandler(e) {
-    setTemplate([])
+    setTemplate(null)
     footerRef.current.classList.remove("hasFiles");
 		importarRef.current.classList.remove("active");
 		setTimeout(() => {

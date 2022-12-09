@@ -190,7 +190,7 @@ body {
             background: linear-gradient(to left, rgba($skin, .2), rgba($skin, .8)) no-repeat;
             background-size: 100% 100%;
             &.active {
-              animation: progress 30s linear;
+              animation: progress 3s linear;
             }
           }
 

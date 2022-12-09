@@ -74,3 +74,6 @@ iframe{
 	 align-items: center;
 }
 
+img{
+  border: 1px solid red;
+}
