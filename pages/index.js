@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Script from 'next/script'
 
-
+import Tick from '../components/tick' 
 
 export default function HomePage() {
   const [file, setFile] = useState()  
@@ -45,19 +45,20 @@ export default function HomePage() {
   const dropRef = useRef()
   const footerRef = useRef()
   const importarRef = useRef()
+  const fileRef = useRef()
 
   // let template
   function handleFileSelect(evt) {
 		const files = evt.target.files; // FileList object
-    console.log('Hi there !')
+    console.log('Hi there !', files[0])
 		//files template
-		let temp =  (<div className="file">
+		let temp =  (<div ref={fileRef} className="file">
      <div className="name"><span>{files[0].name}</span></div>
-     <div className={`progress ${!available ? 'active': ''}`}></div>
-     <div className={`done ${available ? 'anim': ''}`}>
+     <div className="progress active"></div>
+     <div className="done">
 	<a href="" target="_blank">
-      <Image src="/icons/tick.svg" width={20} height={20} alt='tick'/>
-						</a>
+    <Tick id="path"/>
+  </a>
      </div>
     </div> )
 
@@ -71,19 +72,16 @@ export default function HomePage() {
 		// }, 1000);
 
     setAvailable(true)
-    setTimeout(() => {
-			// $(".list-files").innerHTML = template;
+    setTimeout(() => { 
       setAvailable(true)
       console.log('Are you alive?')
 		}, 3000);
 
-		Object.keys(files).forEach(file => {
-      /*** NOT SOLVED YET!! */
-			let load = 2000 + (file * 2000); // fake load
-			// setTimeout(() => {
-			// 	$(`.file--${file}`).querySelector(".progress").classList.remove("active");
-			// 	$(`.file--${file}`).querySelector(".done").classList.add("anim");
-			// }, load);
+		Object.keys(files).forEach(file => {  
+			setTimeout(() => {
+				fileRef.current.querySelector(".progress").classList.remove("active");
+				fileRef.current.querySelector(".done").classList.add("anim");
+			}, 2000);
 		});
 	}
 
@@ -149,7 +147,7 @@ export default function HomePage() {
   </div>
   <footer ref={footerRef}>
    <div className="divider">
-    <span><>FILES</></span> 
+    <span>FILE</span> 
    </div>
    <div className="list-files">{template}</div>
 			<button ref={importarRef} onClick={uploadMoreHandler} className="importar">UPDATE FILES</button>

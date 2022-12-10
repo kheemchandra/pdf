@@ -132,8 +132,9 @@ body {
         transition: width .5s ease;
         span {
           display: inline-block;
-          transform: translateY(-25px);
-          font-size: 12px;
+          transform: translateY(-50px);
+          font-weight: bold;
+          font-size: 20px;
           padding-top: 8px;
         }
       }
@@ -173,9 +174,11 @@ body {
           justify-content: space-between;
           align-items: center;
           opacity: 0;
-          animation: fade .35s ease both;
+          animation: fade .35s ease both; 
           .name {
-            font-size: 12px;
+            
+            font-size: 16px;
+            font-weight: bold;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -190,7 +193,7 @@ body {
             background: linear-gradient(to left, rgba($skin, .2), rgba($skin, .8)) no-repeat;
             background-size: 100% 100%;
             &.active {
-              animation: progress 3s linear;
+              animation: progress 30s linear; // 3s
             }
           }
 
@@ -231,11 +234,11 @@ body {
                 animation: done2 2.5s .5s ease forwards;
               }
             }
-            #path {
+            #path{
               stroke-dashoffset: 7387.59423828125;
               stroke-dasharray: 7387.59423828125 7387.59423828125;
               stroke: #fff;
-              fill: transparent;
+              fill: #fff;
               stroke-width: 50px;
             }
           }
