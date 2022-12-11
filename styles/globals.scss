@@ -2,6 +2,7 @@
  @import url(https://fonts.googleapis.com/css?family=Roboto:100,300);
  
  // outdated
+// outdated
 
 $skin: #4db6ac;
 
@@ -10,17 +11,14 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  
 }
-.wrapper {
+body {
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(to top, #4F6072, #8699AA);
-  
   display: flex;
   justify-content: center;
-  align-items: center; 
-  height: 100vh;
-
+  align-items: center;
+}
 
 //upload component
 .upload {
@@ -34,7 +32,6 @@ body {
   background: #fff;
   animation: fadeup .5s .5s ease both;
   transform: translateY(20px);
-  
   opacity: 0;
   .upload-files {
     header {
@@ -46,10 +43,9 @@ body {
         color: #fff;
         font-size: 40px;
         margin: 0;
-        padding: 50px 0; 
+        padding: 50px 0;
         i {
-          transform: translateY(20px); 
-          margin-right: 10px;
+          transform: translateY(20px);
           opacity: 0;
           font-size: 30px;
           animation: fadeup .5s 1s ease both;
@@ -63,8 +59,8 @@ body {
         }
         .load {
           display: inline-block;
-          font-weight: 100; 
-          margin-left: 1px;
+          font-weight: 100;
+          margin-left: -8px;
           transform: translateX(-20px);
           opacity: 0;
           animation: faderight 1s 1.5s ease both;
@@ -136,9 +132,8 @@ body {
         transition: width .5s ease;
         span {
           display: inline-block;
-          transform: translateY(-50px);
-          font-weight: bold;
-          font-size: 20px;
+          transform: translateY(-25px);
+          font-size: 12px;
           padding-top: 8px;
         }
       }
@@ -178,11 +173,9 @@ body {
           justify-content: space-between;
           align-items: center;
           opacity: 0;
-          animation: fade .35s ease both; 
+          animation: fade .35s ease both;
           .name {
-            
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 12px;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -197,7 +190,7 @@ body {
             background: linear-gradient(to left, rgba($skin, .2), rgba($skin, .8)) no-repeat;
             background-size: 100% 100%;
             &.active {
-              animation: progress 30s linear; // 3s 
+              animation: progress 30s linear;
             }
           }
 
@@ -238,11 +231,11 @@ body {
                 animation: done2 2.5s .5s ease forwards;
               }
             }
-            #path{
+            #path {
               stroke-dashoffset: 7387.59423828125;
               stroke-dasharray: 7387.59423828125 7387.59423828125;
               stroke: #fff;
-              fill: #fff;
+              fill: transparent;
               stroke-width: 50px;
             }
           }
@@ -322,5 +315,4 @@ body {
     width: 100%;
     height: 100%;
   }
-}
 }
