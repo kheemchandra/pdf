@@ -1,15 +1,13 @@
 import React, {useState, useRef} from 'react'
 import axios from 'axios'
 import Link from 'next/link'
-import Image from 'next/image' 
-import { useRouter } from 'next/router'
+import Image from 'next/image'
+import Script from 'next/script'
 
 import Tick from '../components/tick' 
 
-export default function UploadPage() {
+export default function HomePage() {
   const [file, setFile] = useState()  
-  const router = useRouter()
-
   
   function uploadHandler(e) {
     setFile(e.target.files[0])
@@ -28,6 +26,15 @@ export default function UploadPage() {
     })  
     setAvailable(true)
     console.log('Success!')
+  }
+  async function showText() {
+    const response = await fetch('api/content', {
+      method: 'GET'
+    })
+
+    const data = await response.json()
+    console.log('Data is ', data)
+    setText(data.message)
   } 
 
   // ==================START FUNCTION=========
@@ -40,7 +47,7 @@ export default function UploadPage() {
   const importarRef = useRef()
   const fileRef = useRef()
 
-  
+  // let template
   function handleFileSelect(evt) {
 		const files = evt.target.files; // FileList object
     console.log('Hi there !', files[0])
@@ -58,10 +65,13 @@ export default function UploadPage() {
     
 		dropRef.current.classList.add("hidden");
 		footerRef.current.classList.add("hasFiles");
-		importarRef.current.classList.add("active"); 
-    setTemplate(temp) 
+		importarRef.current.classList.add("active");
+		// setTimeout(() => {
+			// $(".list-files").innerHTML = template;
+      setTemplate(temp)
+		// }, 1000);
 
-    
+    setAvailable(true)
     setTimeout(() => { 
       setAvailable(true)
       console.log('Are you alive?')
@@ -79,7 +89,6 @@ export default function UploadPage() {
     e.preventDefault()
     console.log('I am working!')
     inputRef.current.click()
-    console.log('INput ref is ', inputRef.current)
   }     
   
   function dragLeaveHandler(e) {
@@ -97,7 +106,7 @@ export default function UploadPage() {
   function dropHandler(e) {
     e.preventDefault()
     inputRef.current.files = e.dataTransfer.files;
-    footerRef.current.classList.add("hasFiles");
+    footerRef.current.classList.add("active");
     dropRef.current.classList.remove("active");
   }
 
@@ -110,17 +119,10 @@ export default function UploadPage() {
 		}, 500);
   }
 
-  function wrapperHandler(e) { 
-    e.preventDefault()
-    if(e.target === e.currentTarget){
-       router.push('/')
-    }
-  }
-
 
   // ==================END FUNCTION==========
 
-  return <div className="wrapper" onClick={wrapperHandler}>
+  return <>
   
   <div className="upload">
  <div className="upload-files">
@@ -140,10 +142,8 @@ export default function UploadPage() {
   className="body">
    <i className="fa fa-file-text-o pointer-none" aria-hidden="true"></i>
    <p className="pointer-none"><b>Drag and drop</b> files here <br /> or <a href="" id="triggerFile" onClick={uploadFileHandler}>browse</a> to begin the upload</p>
-			<input ref={inputRef} onClick={() => console.log('Working fine!')} multiple type="file" onChange={handleFileSelect}/>
+			<input ref={inputRef} type="file" multiple onChange={handleFileSelect}/>
 			{/* <input type="file" multiple="multiple" /> */}
-      <label htmlFor='num'></label>
-      <input id='num' type='number' />
   </div>
   <footer ref={footerRef}>
    <div className="divider">
@@ -153,7 +153,27 @@ export default function UploadPage() {
 			<button ref={importarRef} onClick={uploadMoreHandler} className="importar">UPDATE FILES</button>
   </footer>
  </div>
-</div> 
+</div>
 
+
+  </>
+
+  // ===================== CODE-END =====================
+
+  return <div>
+    <Image style={{border: '1px solid red', borderRadius: '10px'}} src='/static/dog.png' width={250} height={150} alt='Good Doggy'/>
+    <form onSubmit={submitHandler}>
+      <div>
+        <label htmlFor="pdf">Select a pdf</label>
+        <input id="pdf" type="file" onChange={uploadHandler} required/>
+      </div>
+      <button type='submit'>Convert</button>
+    </form> 
+    <br/>  
+    <Link classNameName={styles['pdf']} href="/pdfs" target="_blank">
+      View pdf
+    </Link> 
+     
   </div>
 }
+ 
