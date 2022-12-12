@@ -48,8 +48,11 @@ export default function HomePage() {
             Upload file
             </a> 
             <a href="" className="btn">
-            View pdf
+            Convert
             </a>
+            <Link href="/pdfs" className="btn" target="_blank">
+            View pdf
+            </Link>
         </div>
       </div>
     </div>

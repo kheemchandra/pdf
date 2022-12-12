@@ -2,18 +2,20 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
-import {useRouter} from "next/router"
+import Script from "next/script"; 
 
 import Tick from "./tick";
 
 export default function Upload(props) {
-  const [file, setFile] = useState();
-  const router = useRouter()
+  const [file, setFile] = useState()
+  const [template, setTemplate] = useState();
 
-  function uploadHandler(e) {
-    setFile(e.target.files[0]);
-  }
+  const inputRef = useRef();
+  const dropRef = useRef();
+  const footerRef = useRef();
+  const importarRef = useRef();
+  const fileRef = useRef();
+ 
   async function submitHandler() {
     event.preventDefault();
 
@@ -25,31 +27,13 @@ export default function Upload(props) {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-    });
-    setAvailable(true);
+    }); 
     console.log("Success!");
-  }
-  async function showText() {
-    const response = await fetch("api/content", {
-      method: "GET",
-    });
-
-    const data = await response.json();
-    console.log("Data is ", data);
-    setText(data.message);
-  }
-
-  // ==================START FUNCTION=========
-  const [template, setTemplate] = useState();
-
-  const inputRef = useRef();
-  const dropRef = useRef();
-  const footerRef = useRef();
-  const importarRef = useRef();
-  const fileRef = useRef();
+  } 
 
   function handleFileSelect(evt) {
     const files = evt.target.files;
+    setFile(evt.target.files[0]);
 
     let temp = (
       <div ref={fileRef} className="file">
@@ -97,11 +81,12 @@ export default function Upload(props) {
   function dropHandler(e) {
     e.preventDefault();
     inputRef.current.files = e.dataTransfer.files;
+    setFile(e.dataTransfer.files[0])
     footerRef.current.classList.add("hasFiles");
     dropRef.current.classList.remove("active");
   }
 
-  function uploadMoreHandler(e) {
+  function uploadMoreHandler1(e) {
     setTemplate(null);
     footerRef.current.classList.remove("hasFiles");
     importarRef.current.classList.remove("active");
@@ -159,10 +144,10 @@ export default function Upload(props) {
             <div className="list-files">{template}</div>
             <button
               ref={importarRef}
-              onClick={uploadMoreHandler}
+              onClick={submitHandler}
               className="importar"
             >
-              UPDATE FILES
+              CONVERT
             </button>
           </footer>
         </div>
