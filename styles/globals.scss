@@ -2,8 +2,12 @@
  @import url(https://fonts.googleapis.com/css?family=Roboto:100,300);
  // outdated
 
-$skin: #4db6ac;
-
+ 
+$skin: #fff;
+$color1: #101820FF;
+$color2: #000;
+$color3: #FEE715FF;
+ 
 html,
 body {
   height: 100%;
@@ -12,49 +16,60 @@ body {
 }
 
 .wrapper {
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(to top, #4F6072, #8699AA);
+  
+  font-family: Tahoma, sans-serif;
+  
+
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh; 
+  background-color: #afafa6;
 .upload {
   position: relative;
   width: 400px;
   min-height: 445px;
   box-sizing: border-box;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(black, .2);
+  
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
   padding-bottom: 20px;
-  background: #fff;
+  background: $color3;
   animation: fadeup .5s .5s ease both;
   transform: translateY(20px);
   opacity: 0;
+
   .upload-files {
     header {
-      background: $skin;
-				  border-top-left-radius: 5px;
-					 border-top-right-radius: 5px;
+      
+      background: $color1;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
       text-align: center;
       p {
-        color: #fff;
+        color: $color3;
         font-size: 40px;
         margin: 0;
-        padding: 50px 0;
-        i {
+        padding: 50px 0; 
+        i { 
+          color: $color3;
           transform: translateY(20px);
           opacity: 0;
           font-size: 30px;
           animation: fadeup .5s 1s ease both;
         }
         .up {
+          font-family: 'Roboto', sans-serif;
           font-weight: bold;
           transform: translateX(-20px);
           display: inline-block;
           opacity: 0;
+          margin-inline: 10px 10px;
           animation: faderight .5s 1.5s ease both;
         }
         .load {
+          font-family: 'Roboto', sans-serif;
           display: inline-block;
           font-weight: 100;
           margin-left: -8px;
@@ -64,7 +79,8 @@ body {
         }
       }
     }
-    .body {
+    .body { 
+      font-family: Tahoma;
       text-align: center;
       padding: 50px 0;
       padding-bottom: 30px;
@@ -75,39 +91,42 @@ body {
         visibility: hidden;
       }
       i {
-        font-size: 65px;
-        color: lightgray;
+        font-size: 65px; 
+        color: $color1;
       }
       p {
         font-size: 14px;
         padding-top: 15px;
         line-height: 1.4;
         b,
-        a {
-          color: $skin;
+        a {     
+          color: $color2;
+          &:hover{
+            color: #f00;
+          }      
         }
       }
       &.active {
         border: dashed 2px $skin;
         i {
-          box-shadow: 0 0 0 -3px #fff,
+          box-shadow: 0 0 0 -3px $color3,
           0 0 0 lightgray,
-          0 0 0 -3px #fff,
+          0 0 0 -3px $color3,
           0 0 0 lightgray;
           animation: file .5s ease both;
         }
         @keyframes file {
           50% {
-            box-shadow: -8px 8px 0 -3px #fff,
+            box-shadow: -8px 8px 0 -3px $color3,
             -8px 8px 0 lightgray,
-            -8px 8px 0 -3px #fff,
+            -8px 8px 0 -3px $color3,
             -8px 8px 0 lightgray;
           }
           75%,
           100% {
-            box-shadow: -8px 8px 0 -3px #fff,
+            box-shadow: -8px 8px 0 -3px $color3,
             -8px 8px 0 lightgray,
-            -16px 16px 0 -3px #fff,
+            -16px 16px 0 -3px $color3,
             -16px 16px 0 lightgray;
           }
         }
@@ -116,7 +135,7 @@ body {
         }
       }
     }
-    footer {
+    footer { 
       width: 100%;
       margin: 0 auto;
       height: 0;
@@ -124,14 +143,18 @@ body {
         margin: 0 auto;
         width: 0;
         border-top: solid 4px darken($skin, 3.5%);
+        border-top: solid 4px darken($color1, 3.5%);
         text-align: center;
         overflow: hidden;
         transition: width .5s ease;
         span {
           display: inline-block;
-          transform: translateY(-25px);
-          font-size: 12px;
+          transform: translateY(-50px);
+          font-size: 20px;
           padding-top: 8px;
+          margin-top: 20px;
+          font-weight: bold;
+          font-family:'Times New Roman', Times, serif;
         }
       }
       &.hasFiles {
@@ -163,7 +186,8 @@ body {
         &::-webkit-scrollbar-thumb {
             background-color: rgba($skin, .5);
         }
-        .file {
+        .file {  
+          margin-top: 40px;
           width: 300px;
           min-height: 50px;
           display: flex;
@@ -172,7 +196,7 @@ body {
           opacity: 0;
           animation: fade .35s ease both;
           .name {
-            font-size: 12px;
+            font-size: 16px;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -183,8 +207,8 @@ body {
             width: 175px;
             height: 5px;
             border: solid 1px lightgray;
-            border-radius: 2px;
-            background: linear-gradient(to left, rgba($skin, .2), rgba($skin, .8)) no-repeat;
+            border-radius: 2px;             
+            background: linear-gradient(to left, rgba($color2, .5), rgba($color2, .9)) no-repeat;
             background-size: 100% 100%;
             &.active {
               animation: progress 30s linear;
@@ -204,7 +228,7 @@ body {
             cursor: pointer;
             width: 40px;
             height: 40px;
-            background: $skin;
+            background: $color2; 
             border-radius: 50%;
             margin-left: -10px;
             transform: scale(0);
@@ -231,8 +255,8 @@ body {
             #path {
               stroke-dashoffset: 7387.59423828125;
               stroke-dasharray: 7387.59423828125 7387.59423828125;
-              stroke: #fff;
-              fill: transparent;
+              stroke: $color3;  
+              fill: transparent; 
               stroke-width: 50px;
             }
           }
@@ -258,15 +282,16 @@ body {
         }
       }
       .importar {
-							 width: 125px;
+        width: 125px;
         outline: none;
         position: absolute;
         left: 0;
         right: 0;
         bottom: 20px;
-        margin: auto;
-        border: solid 1px $skin;
-        color: $skin;
+        margin: auto; 
+        border: solid 1px $color2; 
+        color: $color2;
+        font-weight: bold;
         background: transparent;
         padding: 8px 15px;
         font-size: 12px;
@@ -285,8 +310,8 @@ body {
 									 visibility: visible;
         }
         &:hover{
-          background: $skin;
-          color: #fff;
+          background: $color1; 
+          color: $color3;
         }
       }
     }

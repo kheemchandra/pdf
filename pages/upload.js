@@ -154,7 +154,7 @@ export default function HomePage() {
           </div>
           <footer ref={footerRef}>
             <div className="divider">
-              <span>FILE</span>
+              {/* <span>OK!</span> */}
             </div>
             <div className="list-files">{template}</div>
             <button
