@@ -5,9 +5,9 @@ import Image from "next/image";
 import Script from "next/script";
 import {useRouter} from "next/router"
 
-import Tick from "../components/tick";
+import Tick from "./tick";
 
-export default function HomePage() {
+export default function Upload(props) {
   const [file, setFile] = useState();
   const router = useRouter()
 
@@ -112,7 +112,7 @@ export default function HomePage() {
 
   function wrapperHandler(e) { 
     if(e.target === e.currentTarget){
-      router.push('/')
+      props.onOverlay(e)
     } 
   }
 
