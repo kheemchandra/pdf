@@ -12,7 +12,7 @@
 body{
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: var(--bg);
   font-family: tahoma;
   color: var(--main);
@@ -126,4 +126,9 @@ nav a:hover{
   display: flex; 
   gap: 30px; 
   justify-content: center;
+}
+
+
+iframe{
+  margin-bottom: -15px; 
 }
