@@ -1,21 +1,44 @@
-import React, { useState } from 'react'
-
+import React, { useState, useContext, useEffect } from 'react'
 import Link from "next/link";
 
 import Upload from "../components/upload";
+import Two from '../components/two';
+import { sendFormData } from '../utils/utils'
 
 export default function HomePage() {
-  const [overlay, setOverlay] = useState(false)
+  const [overlay, setOverlay] = useState(false)  
+  const [file, setFile] = useState()
+  const [done, setDone] = useState(false)
 
   const overlayHandler = (e) => {
     e.preventDefault()
     setOverlay(p => !p)
   }
 
+  async function convertHandler(e) {
+    e.preventDefault() 
+    const response = await sendFormData(file)
+    console.log('Success!')
+    setDone(true)
+  } 
+
+  useEffect(() => {
+    if(done){
+      setOverlay(false)
+    }
+  }, [done])
+
+  useEffect(() => {
+    if(file){
+      setDone(false)
+    }
+  }, [file])
+   
+
   return  <>
     <header className="header container">
       <a href="" className="logo">
-        pdf2html
+        pdf<Two />&#160;&#xa0;&#xa0;html 
       </a>
       <nav>
         <a href="">HOME</a>
@@ -47,15 +70,15 @@ export default function HomePage() {
             <a href="" className="btn" onClick={overlayHandler}>
             Upload file
             </a> 
-            <a href="" className="btn">
+           {file && !done && <a href="" className="btn" onClick={convertHandler}>
             Convert
-            </a>
-            <Link href="/pdfs" className="btn" target="_blank">
+            </a>}
+            {done && <Link href="/pdfs" className="btn" target="_blank">
             View pdf
-            </Link>
+            </Link>}
         </div>
       </div>
     </div>
-    {overlay && <Upload onOverlay={overlayHandler}/>} 
+    {overlay && <Upload onOverlay={overlayHandler} onSetFile={setFile} onSetDone={setDone}/>} 
   </>;
 }

@@ -32,6 +32,16 @@ a{
   padding: 40px 0;
 }
 
+.header.i
+ { 
+    color: red;
+    transform: translateY(20px);
+    opacity: 0;
+    font-size: 30px;
+    animation: fadeup .5s 1s ease both;
+  
+}
+
 .container{
   width: calc(var(--size) * var(--ratio)); 
   margin: 0 auto;
@@ -48,7 +58,7 @@ header.container{
 }
 
 .logo{
-  width: 150px;
+  width: 170px;
   padding: 10px 0;
   cursor: pointer;
   position: relative;
@@ -132,3 +142,8 @@ nav a:hover{
 iframe{
   margin-bottom: -15px; 
 }
+
+#two{
+  position: absolute; 
+  height: 30px;
+} 

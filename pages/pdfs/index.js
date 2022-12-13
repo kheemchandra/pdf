@@ -6,7 +6,7 @@ import Script from 'next/script'
 export default function Welcome({files}) {
   const {html} = files 
   if(html.length === 0){
-    return <h2 style={{textAlign: 'center', marginTop: '35%'}}>Please upload a pdf!!</h2>
+    return <h2 style={{textAlign: 'center', marginTop: '250px'}}>Please upload a pdf!!</h2>
   } 
     return <> 
       <Script src='static/utils.js'></Script>    

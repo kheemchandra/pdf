@@ -5,35 +5,30 @@ import Image from "next/image";
 import Script from "next/script"; 
 
 import Tick from "./tick";
+import { sendFormData } from '../utils/utils' 
+
 
 export default function Upload(props) {
   const [file, setFile] = useState()
-  const [template, setTemplate] = useState();
-
+  const [template, setTemplate] = useState()
+  
   const inputRef = useRef();
   const dropRef = useRef();
   const footerRef = useRef();
-  const importarRef = useRef();
-  const fileRef = useRef();
+  const importRef = useRef();
+  
+  const fileRef = useRef(); 
  
-  async function submitHandler() {
-    event.preventDefault();
-
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("fileName", file.name);
-
-    const response = await axios.post("/api/convert/", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    }); 
-    console.log("Success!");
+  async function submitHandler() {  
+    const response = await sendFormData(file)
+    console.log('Success')
+    props.onSetDone(true)
   } 
 
   function handleFileSelect(evt) {
     const files = evt.target.files;
-    setFile(evt.target.files[0]);
+    setFile(files[0]);
+    props.onSetFile(files[0])
 
     let temp = (
       <div ref={fileRef} className="file">
@@ -51,7 +46,7 @@ export default function Upload(props) {
 
     dropRef.current.classList.add("hidden");
     footerRef.current.classList.add("hasFiles");
-    importarRef.current.classList.add("active");
+    importRef.current.classList.add("active");
 
     setTemplate(temp);
 
@@ -82,6 +77,7 @@ export default function Upload(props) {
     e.preventDefault();
     inputRef.current.files = e.dataTransfer.files;
     setFile(e.dataTransfer.files[0])
+    props.onSetFile(e.dataTransfer.files[0])
     footerRef.current.classList.add("hasFiles");
     dropRef.current.classList.remove("active");
   }
@@ -89,7 +85,7 @@ export default function Upload(props) {
   function uploadMoreHandler1(e) {
     setTemplate(null);
     footerRef.current.classList.remove("hasFiles");
-    importarRef.current.classList.remove("active");
+    importRef.current.classList.remove("active");
     setTimeout(() => {
       dropRef.current.classList.remove("hidden");
     }, 500);
@@ -143,7 +139,7 @@ export default function Upload(props) {
             </div>
             <div className="list-files">{template}</div>
             <button
-              ref={importarRef}
+              ref={importRef}
               onClick={submitHandler}
               className="importar"
             >
