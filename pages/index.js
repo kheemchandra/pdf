@@ -40,11 +40,10 @@ export default function HomePage() {
       <a href="" className="logo">
         pdf<Two />&#160;&#xa0;&#xa0;html 
       </a>
-      <nav>
-        <a href="">HOME</a>
-        <a href="">ABOUT</a>
-        <a href="">SERVICES</a>
-        <a href="">CONTACT</a>
+      <nav> 
+        <Link href="/pdfs" target="_blank">FILE</Link>
+        <Link href="">ABOUT</Link>
+        <Link href="">CONTACT</Link>
       </nav>
     </header>
     <div className="container">
