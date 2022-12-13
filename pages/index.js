@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
+import ReactDOM from 'react-dom';
 import Link from "next/link";
 
 import Upload from "../components/upload";
@@ -78,6 +79,6 @@ export default function HomePage() {
         </div>
       </div>
     </div>
-    {overlay && <Upload onOverlay={overlayHandler} onSetFile={setFile} onSetDone={setDone}/>} 
+    {overlay && ReactDOM.createPortal(<Upload onOverlay={overlayHandler} onSetFile={setFile} onSetDone={setDone}/>, document.body)} 
   </>;
 }
